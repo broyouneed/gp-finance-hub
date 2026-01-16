@@ -37,9 +37,9 @@ export const ContactForm = () => {
         >
           {/* Header */}
           <div className="text-center mb-8">
-            <span className="text-accent font-semibold">Get a quote</span>
+            <span className="text-accent font-semibold">Contact Us</span>
             <h2 className="text-3xl md:text-4xl font-bold mt-2">
-              Quick Loan & Insurance Quote Form
+              Get in Touch With Us
             </h2>
           </div>
 
