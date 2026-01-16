@@ -6,7 +6,7 @@ import { CheckCircle, Award, Users, Star } from "lucide-react";
 const features = [
   "Large number of loan products",
   "Experienced & qualified team",
-  "Free loan quotes",
+  "Competitive interest rates",
   "Custom insurance plans for every need",
 ];
 

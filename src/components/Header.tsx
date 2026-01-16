@@ -8,7 +8,7 @@ const navLinks = [
   { name: "About Us", href: "#about" },
   { name: "Services", href: "#services" },
   { name: "How It Works", href: "#how-it-works" },
-  { name: "Testimonials", href: "#testimonials" },
+  { name: "EMI Calculator", href: "#emi-calculator" },
   { name: "FAQ", href: "#faq" },
   { name: "Contact", href: "#contact" },
 ];
@@ -81,9 +81,11 @@ export const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button className="btn-gradient rounded-full px-6">
-              Get a Quote
-            </Button>
+            <a href="tel:+918460775757">
+              <Button className="btn-gradient rounded-full px-6">
+                Call Now
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -119,9 +121,11 @@ export const Header = () => {
                     {link.name}
                   </a>
                 ))}
-                <Button className="btn-gradient rounded-full w-full mt-2">
-                  Get a Quote
-                </Button>
+                <a href="tel:+918460775757" className="w-full">
+                  <Button className="btn-gradient rounded-full w-full mt-2">
+                    Call Now
+                  </Button>
+                </a>
               </nav>
             </motion.div>
           )}
