@@ -116,10 +116,10 @@ export const About = () => {
             {/* Founder Info */}
             <div className="flex items-center gap-4 pt-4 border-t border-border">
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-2xl font-bold text-primary">
-                PG
+                DG
               </div>
               <div>
-                <p className="font-bold text-lg">Paresh Gupta</p>
+                <p className="font-bold text-lg">Dileep GP</p>
                 <p className="text-muted-foreground text-sm">CEO & Founder</p>
               </div>
             </div>
