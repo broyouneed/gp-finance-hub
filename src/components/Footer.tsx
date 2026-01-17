@@ -38,10 +38,7 @@ export const Footer = () => {
           {/* Brand */}
           <div className="space-y-6">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center">
-                <span className="text-accent-foreground font-bold text-lg">GP</span>
-              </div>
-              <span className="font-bold text-xl">Finance</span>
+              <img src="/logo.png" alt="GP Finserve Logo" className="h-12 w-auto bg-white rounded-lg p-1" />
             </div>
             <p className="text-primary-foreground/80 text-sm leading-relaxed">
               Empowering your future with tailored loan & insurance solutions — 
@@ -137,7 +134,7 @@ export const Footer = () => {
       <div className="border-t border-primary-foreground/10 py-6">
         <div className="container-custom text-center">
           <p className="text-primary-foreground/60 text-sm">
-            © {new Date().getFullYear()} GP Financial Services. All rights reserved.
+            © {new Date().getFullYear()} GP Finserve. All rights reserved.
           </p>
         </div>
       </div>
