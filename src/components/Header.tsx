@@ -59,10 +59,7 @@ export const Header = () => {
         <div className="container-custom flex justify-between items-center px-4">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">GP</span>
-            </div>
-            <span className="font-bold text-xl text-foreground">Finance</span>
+            <img src="/logo.png" alt="GP Finserve Logo" className="h-12 w-auto" />
           </a>
 
           {/* Desktop Navigation */}
