@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 
 const partners = [
-  { name: "UTI Mutual Fund", logo: "https://www.utimf.com/images/uti-logo.png", url: "https://www.utimf.com/" },
-  { name: "HDFC Mutual Fund", logo: "https://www.hdfcfund.com/content/dam/abc/india/assets/images/HDFC-Logo.svg", url: "https://www.hdfcfund.com/" },
-  { name: "ICICI Prudential", logo: "https://www.icicipruamc.com/images/ICICI-Prudential-logo.svg", url: "https://www.icicipruamc.com/" },
-  { name: "Bandhan Mutual Fund", logo: "https://www.bandhanmutual.com/assets/images/logo.svg", url: "https://www.bandhanmutual.com/" },
-  { name: "Aditya Birla Sun Life", logo: "https://mutualfund.adityabirlacapital.com/content/dam/abc-foundation/images/ABSLMFLogo.svg", url: "https://mutualfund.adityabirlacapital.com/" },
-  { name: "Nippon India", logo: "https://mf.nipponindiaim.com/Content/images/niim-mf-logo.svg", url: "https://mf.nipponindiaim.com/" },
+  { name: "UTI Mutual Fund", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_dPSCc2fR3Besu-OP99WwTOlci2pVVVrrdA&s", url: "https://www.utimf.com/" },
+  { name: "HDFC Mutual Fund", logo: "https://1000logos.net/wp-content/uploads/2021/06/HDFC-Bank-emblem.png", url: "https://www.hdfcfund.com/" },
+  { name: "ICICI Prudential", logo: "https://i.pinimg.com/736x/ff/d5/31/ffd531a6a78464512a97848e14506738.jpg", url: "https://www.icicipruamc.com/" },
+  { name: "Bandhan Mutual Fund", logo: "https://saveyourtax.bandhanmutual.com/assets/logo/bandhan-logo.png", url: "https://www.bandhanmutual.com/" },
+  { name: "Aditya Birla Sun Life", logo: "https://media.licdn.com/dms/image/v2/D4D0BAQFRJbym_ZuGMA/company-logo_200_200/company-logo_200_200/0/1706788062189/aditya_birla_capital_logo?e=2147483647&v=beta&t=PZnVhFeRttWPsZ8xXhOB7hUcjgboJ7A4fWXavtgLCsw", url: "https://mutualfund.adityabirlacapital.com/" },
+  { name: "Nippon India", logo: "https://signupfinancials.com/images/p16.png", url: "https://mf.nipponindiaim.com/" },
 ];
 
 export const Partners = () => {

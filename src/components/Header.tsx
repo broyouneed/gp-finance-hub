@@ -61,7 +61,7 @@ export const Header = () => {
             <img 
               src="/logo.png" 
               alt="GP Finserve Logo" 
-              className="h-20 md:h-24 w-auto drop-shadow-lg hover:scale-105 transition-transform duration-300" 
+              className="h-22 md:h-28 w-auto drop-shadow-lg hover:scale-105 transition-transform duration-300" 
             />
           </a>
 

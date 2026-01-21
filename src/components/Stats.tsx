@@ -63,12 +63,12 @@ export const Stats = () => {
               Let's Request a Schedule For
             </h3>
             <p className="text-primary-foreground/80 mb-4">Free Consultation</p>
-            <Button 
-              size="lg" 
-              className="btn-gradient rounded-full px-8"
-            >
-              Contact Us
-            </Button>
+            <a href="tel:+917012565990">
+  <Button size="lg" className="btn-gradient rounded-full px-8">
+    Contact Us
+  </Button>
+</a>
+
           </motion.div>
 
           {/* Stats */}

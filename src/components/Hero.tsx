@@ -60,11 +60,18 @@ export const Hero = () => {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="btn-gradient rounded-full px-8 text-lg font-bold group">
-                Apply Now
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full px-8 text-lg font-bold border-2 border-primary hover:bg-primary hover:text-primary-foreground">
+            <Button
+  size="lg"
+  className="btn-gradient rounded-full px-8 text-lg font-bold group"
+  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+>
+  Apply Now
+  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+</Button>
+
+              <Button size="lg" variant="outline" className="rounded-full px-8 text-lg font-bold border-2 border-primary hover:bg-primary hover:text-primary-foreground"
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+>
                 Learn More
               </Button>
             </div>

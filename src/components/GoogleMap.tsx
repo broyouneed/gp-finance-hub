@@ -55,8 +55,7 @@ export const GoogleMap = () => {
                 <div>
                   <p className="font-semibold mb-1">Address</p>
                   <p className="text-primary-foreground/80 text-sm">
-                    1802, The Junomoneta Tower, Nr Rajhans Cinema, 
-                    Opposite Pal RTO Road, Surat 395009
+                   No. 12/177/18, First Floor, Chembukkavu Shopping Complex, Thrissur, Kerala - 680020
                   </p>
                 </div>
               </div>
@@ -83,7 +82,7 @@ export const GoogleMap = () => {
                 <div>
                   <p className="font-semibold mb-1">Phone</p>
                   <a href="tel:+918460775757" className="text-primary-foreground/80 text-sm hover:text-accent transition-colors">
-                    +91 8460775757
+                  +91 7012565990
                   </a>
                 </div>
               </div>
@@ -95,7 +94,7 @@ export const GoogleMap = () => {
                 <div>
                   <p className="font-semibold mb-1">Email</p>
                   <a href="mailto:support@gpfinservices.com" className="text-primary-foreground/80 text-sm hover:text-accent transition-colors">
-                    support@gpfinservices.com
+                  gpfinserve1@gmail.com
                   </a>
                 </div>
               </div>
@@ -122,7 +121,7 @@ export const GoogleMap = () => {
             className="lg:col-span-2 rounded-2xl overflow-hidden shadow-lg border-2 border-border h-[400px] lg:h-auto"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.3847689767386!2d72.78881681493492!3d21.175899485911373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e5920e9e6b1%3A0x9c8f8f8f8f8f8f8f!2sJunomoneta%20Tower!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d291.12972244089474!2d76.21926853673698!3d10.532927474837988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ee53dcc5bf4b%3A0x35aa9cca67f01daa!2sG6M9%2B6R5%2C%20Cheroor%20Rd%2C%20Chembukkav%2C%20Thrissur%2C%20Kerala%20680020!5e1!3m2!1sen!2sin!4v1768984562578!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: "400px" }}

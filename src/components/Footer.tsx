@@ -5,7 +5,6 @@ const mainLinks = [
   { name: "HOME", href: "#home" },
   { name: "ABOUT US", href: "#about" },
   { name: "SERVICES", href: "#services" },
-  { name: "GALLERY", href: "#gallery" },
   { name: "CONTACT US", href: "#contact" },
 ];
 
@@ -92,7 +91,7 @@ export const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                 <p className="text-primary-foreground/80 text-sm">
-                  1802, The Junomoneta Tower, Nr Rajhans Cinema, Opposite Pal RTO Road, Surat 395009
+                No. 12/177/18, First Floor, Chembukkavu Shopping Complex, Thrissur, Kerala - 680020
                 </p>
               </div>
               <div className="flex items-center gap-3">
@@ -105,13 +104,13 @@ export const Footer = () => {
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-accent flex-shrink-0" />
                 <a href="tel:+918460775757" className="text-sm hover:text-accent transition-colors">
-                  +91 8460775757
+                  +91 7012565990
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-accent flex-shrink-0" />
                 <a href="mailto:support@gpfinservices.com" className="text-sm hover:text-accent transition-colors">
-                  support@gpfinservices.com
+                  gpfinserve1@gmail.com
                 </a>
               </div>
             </div>
