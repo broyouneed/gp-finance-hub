@@ -4,13 +4,13 @@ import { Phone, Mail, Menu, X, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About Us", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "How It Works", href: "#how-it-works" },
-  { name: "EMI Calculator", href: "#emi-calculator" },
+  { name: "HOME", href: "#home" },
+  { name: "ABOUT US", href: "#about" },
+  { name: "SERVICES", href: "#services" },
+  { name: "GALLERY", href: "#gallery" },
+  { name: "EMI CALCULATOR", href: "#emi-calculator" },
   { name: "FAQ", href: "#faq" },
-  { name: "Contact", href: "#contact" },
+  { name: "CONTACT US", href: "#contact" },
 ];
 
 export const Header = () => {
@@ -37,7 +37,7 @@ export const Header = () => {
             </a>
             <span className="flex items-center gap-2">
               <Clock className="w-4 h-4" />
-              Mon – Sat 9:30 am – 6:30 pm
+              Mon – Sat 9:30 AM – 5:00 PM
             </span>
           </div>
           <a href="tel:+918460775757" className="flex items-center gap-2 font-semibold hover:text-accent transition-colors">
@@ -58,17 +58,24 @@ export const Header = () => {
       >
         <div className="container-custom flex justify-between items-center px-4">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2">
-            <img src="/logo.png" alt="GP Finserve Logo" className="h-12 w-auto" />
+          <a href="#home" className="flex items-center gap-3">
+            <img src="/logo.png" alt="GP Finserve Logo" className="h-16 md:h-20 w-auto" />
+            <div className="hidden sm:block">
+              <span className="text-xl md:text-2xl font-extrabold text-primary tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                GP FINSERVE
+              </span>
+              <p className="text-xs text-muted-foreground font-medium -mt-1">Your Financial Partner</p>
+            </div>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-foreground/80 hover:text-primary font-medium transition-colors relative group"
+                className="text-foreground hover:text-primary font-bold text-sm tracking-wide transition-colors relative group"
+                style={{ fontFamily: 'Poppins, sans-serif' }}
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />

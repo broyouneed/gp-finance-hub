@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { MapPin, Clock, Phone, Mail, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 
 const mainLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About Us", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "EMI Calculator", href: "#" },
-  { name: "Contact", href: "#contact" },
+  { name: "HOME", href: "#home" },
+  { name: "ABOUT US", href: "#about" },
+  { name: "SERVICES", href: "#services" },
+  { name: "GALLERY", href: "#gallery" },
+  { name: "CONTACT US", href: "#contact" },
 ];
 
 const serviceLinks = [
@@ -37,8 +37,14 @@ export const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="space-y-6">
-            <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="GP Finserve Logo" className="h-12 w-auto bg-white rounded-lg p-1" />
+            <div className="flex items-center gap-3 mb-2">
+              <img src="/logo.png" alt="GP Finserve Logo" className="h-16 w-auto bg-white rounded-lg p-2" />
+              <span 
+                className="text-2xl font-black text-primary-foreground"
+                style={{ fontFamily: 'Poppins, sans-serif' }}
+              >
+                GP FINSERVE
+              </span>
             </div>
             <p className="text-primary-foreground/80 text-sm leading-relaxed">
               Empowering your future with tailored loan & insurance solutions — 
@@ -92,7 +98,7 @@ export const Footer = () => {
               <div className="flex items-center gap-3">
                 <Clock className="w-5 h-5 text-accent flex-shrink-0" />
                 <div className="text-sm">
-                  <p className="text-primary-foreground/80">Mon – Sat: 09:30 AM – 06:30 PM</p>
+                  <p className="text-primary-foreground/80">Mon – Sat: 09:30 AM – 05:00 PM</p>
                   <p className="text-primary-foreground/60">Sun: Closed</p>
                 </div>
               </div>
