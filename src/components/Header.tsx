@@ -7,7 +7,6 @@ const navLinks = [
   { name: "HOME", href: "#home" },
   { name: "ABOUT US", href: "#about" },
   { name: "SERVICES", href: "#services" },
-  { name: "GALLERY", href: "#gallery" },
   { name: "EMI CALCULATOR", href: "#emi-calculator" },
   { name: "FAQ", href: "#faq" },
   { name: "CONTACT US", href: "#contact" },
@@ -40,9 +39,9 @@ export const Header = () => {
               Mon – Sat 9:30 AM – 5:00 PM
             </span>
           </div>
-          <a href="tel:+918460775757" className="flex items-center gap-2 font-semibold hover:text-accent transition-colors">
+          <a href="tel:+917012565990" className="flex items-center gap-2 font-semibold hover:text-accent transition-colors">
             <Phone className="w-4 h-4" />
-            +91 8460775757
+            +91 7012565990
           </a>
         </div>
       </div>
@@ -57,15 +56,13 @@ export const Header = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="container-custom flex justify-between items-center px-4">
-          {/* Logo */}
-          <a href="#home" className="flex items-center gap-3">
-            <img src="/logo.png" alt="GP Finserve Logo" className="h-16 md:h-20 w-auto" />
-            <div className="hidden sm:block">
-              <span className="text-xl md:text-2xl font-extrabold text-primary tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                GP FINSERVE
-              </span>
-              <p className="text-xs text-muted-foreground font-medium -mt-1">Your Financial Partner</p>
-            </div>
+          {/* Logo Only - Projected */}
+          <a href="#home" className="flex items-center">
+            <img 
+              src="/logo.png" 
+              alt="GP Finserve Logo" 
+              className="h-20 md:h-24 w-auto drop-shadow-lg hover:scale-105 transition-transform duration-300" 
+            />
           </a>
 
           {/* Desktop Navigation */}
@@ -85,7 +82,7 @@ export const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <a href="tel:+918460775757">
+            <a href="tel:+917012565990">
               <Button className="btn-gradient rounded-full px-6">
                 Call Now
               </Button>
@@ -125,7 +122,7 @@ export const Header = () => {
                     {link.name}
                   </a>
                 ))}
-                <a href="tel:+918460775757" className="w-full">
+                <a href="tel:+917012565990" className="w-full">
                   <Button className="btn-gradient rounded-full w-full mt-2">
                     Call Now
                   </Button>

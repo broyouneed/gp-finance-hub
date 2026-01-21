@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink, Download, Smartphone } from "lucide-react";
+import eliteWealthQR from "@/assets/elite-wealth-qr.svg";
 
 interface Partner {
   name: string;
@@ -178,7 +179,7 @@ export const ServicePartners = () => {
           className="glass-card rounded-3xl p-8 md:p-12 text-center"
         >
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-            <div className="flex-1 text-left md:text-center">
+            <div className="flex-1 text-center">
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-4">
                 <Smartphone className="w-5 h-5" />
                 <span className="font-semibold text-sm">Mobile App</span>
@@ -186,7 +187,7 @@ export const ServicePartners = () => {
               <h3 className="text-2xl md:text-3xl font-bold mb-3">
                 Download <span className="gradient-text">Elite Wealth App</span>
               </h3>
-              <p className="text-muted-foreground mb-6 max-w-md">
+              <p className="text-muted-foreground mb-6 max-w-md mx-auto">
                 Manage your investments, track mutual funds, and access all financial services 
                 on the go. Scan the QR code to download now!
               </p>
@@ -216,7 +217,7 @@ export const ServicePartners = () => {
             <div className="flex-shrink-0">
               <div className="bg-white p-4 rounded-2xl shadow-lg">
                 <img
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://play.google.com/store/apps/details?id=com.elitewealth.app"
+                  src={eliteWealthQR}
                   alt="Download Elite Wealth App QR Code"
                   className="w-44 h-44"
                 />
