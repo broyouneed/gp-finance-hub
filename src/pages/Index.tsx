@@ -29,7 +29,7 @@ const Index = () => {
         <HowItWorks />
         <MutualFundGuide />
         <StartSIP />
-        <FinancialCalculators />
+        {/* <FinancialCalculators /> */}
         <TopFunds />
         <ServicePartners />
         <FAQ />
