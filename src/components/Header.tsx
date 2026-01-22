@@ -59,7 +59,7 @@ export const Header = () => {
           {/* Logo Only - Projected */}
           <a href="#home" className="flex items-center">
             <img 
-              src="/logo.png" 
+              src="/gp.png" 
               alt="GP Finserve Logo" 
               className="h-20 md:h-24 w-auto drop-shadow-lg hover:scale-105 transition-transform duration-300" 
             />
