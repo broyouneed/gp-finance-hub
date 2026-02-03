@@ -213,19 +213,53 @@ export const ServicePartners = () => {
               </div>
             </div>
             
-            {/* QR Code */}
-            <div className="flex-shrink-0">
-              <div className="bg-white p-4 rounded-2xl shadow-lg">
-                <img
-                  src={eliteWealthQR}
-                  alt="Download Elite Wealth App QR Code"
-                  className="w-44 h-44"
-                />
+            {/* Animated QR Scanner */}
+            <motion.div
+              className="flex-shrink-0 flex flex-col items-center"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              {/* Phone Frame */}
+              <div className="relative p-3 shadow-2xl">
+                <div className="relative bg-white rounded-2xl overflow-hidden p-4">
+
+                  {/* QR Image */}
+                  <img
+                    src={eliteWealthQR}
+                    alt="Download Elite Wealth App QR Code"
+                    className="w-44 h-44"
+                  />
+
+                  {/* Scanning Line */}
+                  <motion.div
+                    className="absolute left-0 right-0 h-1 bg-emerald-400/80 shadow-[0_0_12px_rgba(16,185,129,0.8)]"
+                    animate={{ top: ["10%", "85%", "10%"] }}
+                    transition={{
+                      duration: 2.4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+
+                  {/* Scanner Border Glow */}
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl border-2 border-emerald-400/40"
+                    animate={{ opacity: [0.3, 0.6, 0.3] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                </div>
               </div>
-              <p className="text-sm text-muted-foreground mt-3 text-center">
+
+              {/* Text */}
+              <motion.p
+                className="text-sm text-muted-foreground mt-4"
+                animate={{ opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
                 Scan to Download
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
+
           </div>
         </motion.div>
       </div>

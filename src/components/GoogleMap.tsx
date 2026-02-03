@@ -114,12 +114,58 @@ export const GoogleMap = () => {
           </motion.div>
 
           {/* Map */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-2 rounded-2xl overflow-hidden shadow-lg border-2 border-border h-[400px] lg:h-auto"
+         <motion.div
+            initial={{
+              opacity: 0,
+              scale: 0.85,
+              rotateZ: -2,
+            }}
+            animate={
+              isInView
+                ? {
+                    opacity: 1,
+                    scale: 1,
+                    rotateZ: 0,
+                  }
+                : {}
+            }
+            transition={{
+              duration: 0.9,
+              ease: [0.16, 1, 0.3, 1], // springy premium feel
+            }}
+            whileHover={{
+              scale: 1.04,
+              rotateZ: 0.3,
+            }}
+            className="relative lg:col-span-2 rounded-3xl overflow-hidden shadow-2xl border-2 border-border h-[400px] lg:h-auto bg-background"
           >
+            {/* 🔴 PIN DROP */}
+            <motion.div
+              initial={{ y: -120, scale: 0 }}
+              animate={isInView ? { y: 0, scale: 1 } : {}}
+              transition={{ delay: 0.5, type: "spring", stiffness: 180 }}
+              className="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
+              {/* <div className="w-6 h-6 bg-red-500 rounded-full shadow-lg" /> */}
+              {/* <div className="w-1.5 h-10 bg-red-500 mx-auto rounded-b-full" /> */}
+            </motion.div>
+
+            {/* 🌊 RIPPLE EFFECT */}
+            <motion.div
+              className="absolute z-10 top-1/2 left-1/2 w-10 h-10 rounded-full border-2 border-red-400"
+              initial={{ scale: 0, opacity: 0.8 }}
+              animate={
+                isInView
+                  ? { scale: [0, 6], opacity: [0.8, 0] }
+                  : {}
+              }
+              transition={{
+                delay: 0.6,
+                duration: 1.6,
+                repeat: Infinity,
+                ease: "easeOut",
+              }}
+            />
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d291.12972244089474!2d76.21926853673698!3d10.532927474837988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ee53dcc5bf4b%3A0x35aa9cca67f01daa!2sG6M9%2B6R5%2C%20Cheroor%20Rd%2C%20Chembukkav%2C%20Thrissur%2C%20Kerala%20680020!5e1!3m2!1sen!2sin!4v1768984562578!5m2!1sen!2sin"
               width="100%"

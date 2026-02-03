@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence} from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { TrendingUp, TrendingDown, Star, ArrowUpRight } from "lucide-react";
@@ -84,17 +84,31 @@ export const TopFunds = () => {
           </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          {activeTab === "mutual-funds" ? (
-            <MutualFundsTable />
-          ) : (
-            <SIPsTable />
+        <AnimatePresence mode="wait">
+          {activeTab === "mutual-funds" && (
+            <motion.div
+              key="mutual"
+              initial={{ opacity: 0, x: 120, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: -120, scale: 0.95 }}
+              transition={{ duration: 0.45, ease: "easeInOut" }}
+            >
+              <MutualFundsTable />
+            </motion.div>
           )}
-        </motion.div>
+
+          {activeTab === "sips" && (
+            <motion.div
+              key="sips"
+              initial={{ opacity: 0, x: -120, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: 120, scale: 0.95 }}
+              transition={{ duration: 0.45, ease: "easeInOut" }}
+            >
+              <SIPsTable />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <motion.p
           initial={{ opacity: 0 }}
