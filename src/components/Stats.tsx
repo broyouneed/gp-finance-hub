@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const stats = [
-  // { value: 500, suffix: "CR+", label: "Amount Disbursed" },
+  { value: 1000, suffix: "CR+", label: "Amount Disbursed" },
   { value: 50, suffix: "+", label: "Professional team" },
   { value: 15, suffix: "K", label: "Satisfied customer" },
   { value: 99, suffix: "%", label: "Success rates" },
