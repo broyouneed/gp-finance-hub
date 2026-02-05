@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { ExternalLink, Download, Smartphone } from "lucide-react";
+import { useRef, useState } from "react";
+import { ExternalLink, Download, Smartphone, ChevronDown } from "lucide-react";
 import eliteWealthQR from "@/assets/elite-wealth-qr.svg";
 
 interface Partner {
@@ -78,7 +78,7 @@ const serviceCategories: ServiceCategory[] = [
     title: "PAN Card Services",
     subtitle: "New PAN, Correction & Linking",
     partners: [
-      { name: "NSDL PAN", url: "https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" },
+      { name: "NSDL PAN", url: "https://www.onlineservices.nsdl.com" },
       { name: "UTIITSL PAN", url: "https://www.pan.utiitsl.com" },
     ],
     color: "accent",
@@ -109,6 +109,7 @@ const getColorClasses = (color: string) => {
 export const ServicePartners = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section id="service-partners" className="section-padding bg-muted/30" ref={ref}>
@@ -128,50 +129,78 @@ export const ServicePartners = () => {
             <span className="gradient-text">Complete Financial Solutions</span>
           </h2>
           <p className="text-muted-foreground">
-            Click on any partner to visit their official website and explore their offerings.
+            Click a category to view our partnered institutions.
           </p>
         </motion.div>
 
-        {/* Service Categories Grid */}
+        {/* Categories */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {serviceCategories.map((category, index) => {
             const colorClasses = getColorClasses(category.color);
+            const isOpen = openIndex === index;
+
             return (
               <motion.div
                 key={category.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="glass-card rounded-2xl p-6"
+                onClick={() => setOpenIndex(isOpen ? null : index)}
+                className="glass-card rounded-2xl p-6 cursor-pointer"
               >
-                <h3 className={`font-bold text-lg mb-1 ${colorClasses.text}`}>
-                  {category.title}
-                </h3>
-                {category.subtitle && (
-                  <p className="text-sm text-muted-foreground mb-4">
-                    {category.subtitle}
-                  </p>
-                )}
-                <div className="flex flex-wrap gap-2">
-                  {category.partners.map((partner) => (
-                    <a
-                      key={partner.name}
-                      href={partner.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium ${colorClasses.bg} ${colorClasses.text} hover:opacity-80 transition-all hover:scale-105 border ${colorClasses.border}`}
-                    >
-                      {partner.name}
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
-                  ))}
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h3 className={`font-bold text-lg ${colorClasses.text}`}>
+                      {category.title}
+                    </h3>
+                    {category.subtitle && (
+                      <p className="text-sm text-muted-foreground">
+                        {category.subtitle}
+                      </p>
+                    )}
+                   
+                  </div>
+
+                  <ChevronDown
+                    className={`w-5 h-5 mt-1 transition-transform ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                  />
                 </div>
+
+                {/* Reveal */}
+                <motion.div
+                  initial={false}
+                  animate={
+                    isOpen
+                      ? { height: "auto", opacity: 1 }
+                      : { height: 0, opacity: 0 }
+                  }
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="flex flex-wrap gap-2 pt-4">
+                    {category.partners.map((partner) => (
+                      <a
+                        key={partner.name}
+                        href={partner.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium ${colorClasses.bg} ${colorClasses.text} hover:opacity-80 transition-all hover:scale-105 border ${colorClasses.border}`}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {partner.name}
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    ))}
+                  </div>
+                </motion.div>
               </motion.div>
             );
           })}
         </div>
 
-        {/* Elite Wealth App Download Section */}
+        {/* App Download */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -179,7 +208,7 @@ export const ServicePartners = () => {
           className="glass-card rounded-3xl p-8 md:p-12 text-center"
         >
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-            <div className="flex-1 text-center">
+            <div className="flex-1">
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-4">
                 <Smartphone className="w-5 h-5" />
                 <span className="font-semibold text-sm">Mobile App</span>
@@ -188,43 +217,20 @@ export const ServicePartners = () => {
                 Download <span className="gradient-text">Elite Wealth App</span>
               </h3>
               <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-                Manage your investments, track mutual funds, and access all financial services 
-                on the go. Scan the QR code to download now!
+                Manage investments and track mutual funds on the go.
               </p>
-              <div className="flex flex-wrap gap-3 justify-center">
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.elitewealth.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-3 rounded-xl font-medium hover:opacity-90 transition-opacity"
-                >
-                  <Download className="w-5 h-5" />
-                  Google Play
+              <div className="flex gap-3 justify-center">
+              <a href="https://play.google.com/store/apps/details?id=com.redvision.wealth_elite&hl=en_IN" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-3 rounded-xl font-medium hover:opacity-90 transition-opacity" >                  <Download className="w-5 h-5" /> Google Play
                 </a>
-                <a
-                  href="https://apps.apple.com/app/elite-wealth"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-3 rounded-xl font-medium hover:opacity-90 transition-opacity"
-                >
-                  <Download className="w-5 h-5" />
-                  App Store
+                <a href="https://apps.apple.com/in/app/wealth-elite/id1518518606" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-3 rounded-xl font-medium hover:opacity-90 transition-opacity" >   
+                <Download className="w-5 h-5" /> App Store
                 </a>
               </div>
             </div>
-            
-            {/* QR Code */}
-            <div className="flex-shrink-0">
-              <div className="bg-white p-4 rounded-2xl shadow-lg">
-                <img
-                  src={eliteWealthQR}
-                  alt="Download Elite Wealth App QR Code"
-                  className="w-44 h-44"
-                />
-              </div>
-              <p className="text-sm text-muted-foreground mt-3 text-center">
-                Scan to Download
-              </p>
+
+            <div className="bg-white p-4 rounded-2xl shadow-lg">
+              <img src={eliteWealthQR} alt="Elite Wealth QR" className="w-44 h-44" />
+              <p className="text-sm text-muted-foreground mt-3">Scan to Download</p>
             </div>
           </div>
         </motion.div>

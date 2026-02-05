@@ -34,7 +34,11 @@ export const StartSIP = () => {
   const [activeTab, setActiveTab] = useState<"sip" | "mf">("sip");
 
   return (
-    <section className="section-padding bg-accent/10 relative overflow-hidden" ref={ref}>
+<section
+  id="StartSIP"
+  className="section-padding bg-accent/10 relative overflow-hidden"
+  ref={ref}
+>
       {/* Background Pattern */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
@@ -177,12 +181,30 @@ export const StartSIP = () => {
   );
 };
 
-/* ----------------------------- SIP CALC MINI ----------------------------- */
-
 const SIPCalculatorMini = () => {
+  const [goalAmount, setGoalAmount] = useState(2000000); // 🎯 Goal
   const [monthlyInvestment, setMonthlyInvestment] = useState(10000);
   const [expectedReturn, setExpectedReturn] = useState(12);
   const [timePeriod, setTimePeriod] = useState(10);
+
+  // 🔢 Calculate SIP required for goal
+  const calculatedMonthlySIP = useMemo(() => {
+    const r = expectedReturn / 12 / 100;
+    const n = timePeriod * 12;
+
+    if (r === 0) return Math.round(goalAmount / n);
+
+    const sip =
+      goalAmount /
+      (((Math.pow(1 + r, n) - 1) / r) * (1 + r));
+
+    return Math.max(500, Math.round(sip));
+  }, [goalAmount, expectedReturn, timePeriod]);
+
+  // Sync SIP with goal-based calculation
+  useMemo(() => {
+    setMonthlyInvestment(calculatedMonthlySIP);
+  }, [calculatedMonthlySIP]);
 
   const sipDetails = useMemo(() => {
     const P = monthlyInvestment;
@@ -191,11 +213,10 @@ const SIPCalculatorMini = () => {
 
     const totalInvested = P * n;
 
-    // Guard against 0% return
     if (r === 0) {
       return {
-        totalInvested: Math.round(totalInvested),
-        futureValue: Math.round(totalInvested),
+        totalInvested,
+        futureValue: totalInvested,
         wealthGained: 0,
       };
     }
@@ -216,23 +237,46 @@ const SIPCalculatorMini = () => {
       <div className="bg-secondary/10 rounded-2xl p-5 text-center border border-secondary/20">
         <div className="flex items-center justify-center gap-2 mb-2">
           <TrendingUp className="w-5 h-5 text-secondary" />
-          <span className="text-sm font-medium text-muted-foreground">Future Value</span>
+          <span className="text-sm font-medium text-muted-foreground">
+            Goal Amount
+          </span>
         </div>
         <p className="text-3xl md:text-4xl font-black text-secondary flex items-center justify-center gap-1">
           <IndianRupee className="w-7 h-7" />
-          {sipDetails.futureValue.toLocaleString("en-IN")}
+          {goalAmount.toLocaleString("en-IN")}
         </p>
         <p className="text-xs text-muted-foreground mt-2">
-          Invested: <span className="font-semibold">{formatCurrency(sipDetails.totalInvested)}</span> • Gains:{" "}
-          <span className="font-semibold text-secondary">{formatCurrency(sipDetails.wealthGained)}</span>
+          Required SIP:{" "}
+          <span className="font-semibold text-secondary">
+            {formatCurrency(monthlyInvestment)}
+          </span>
         </p>
       </div>
 
-      {/* Monthly Investment */}
+      {/* 🎯 Goal Amount Slider */}
+      <div className="space-y-3">
+        <div className="flex justify-between items-center">
+          <label className="text-sm font-medium">Goal Amount</label>
+          <span className="text-secondary font-bold">
+            {formatCurrency(goalAmount)}
+          </span>
+        </div>
+        <Slider
+          value={[goalAmount]}
+          onValueChange={(v) => setGoalAmount(v[0])}
+          min={100000}
+          max={50000000}
+          step={50000}
+        />
+      </div>
+
+      {/* Monthly SIP (Auto-calculated) */}
       <div className="space-y-3">
         <div className="flex justify-between items-center">
           <label className="text-sm font-medium">Monthly SIP</label>
-          <span className="text-secondary font-bold">{formatCurrency(monthlyInvestment)}</span>
+          <span className="text-secondary font-bold">
+            {formatCurrency(monthlyInvestment)}
+          </span>
         </div>
         <Slider
           value={[monthlyInvestment]}
@@ -247,7 +291,9 @@ const SIPCalculatorMini = () => {
       <div className="space-y-3">
         <div className="flex justify-between items-center">
           <label className="text-sm font-medium">Expected Return</label>
-          <span className="text-secondary font-bold">{expectedReturn}%</span>
+          <span className="text-secondary font-bold">
+            {expectedReturn}%
+          </span>
         </div>
         <Slider
           value={[expectedReturn]}
@@ -262,26 +308,52 @@ const SIPCalculatorMini = () => {
       <div className="space-y-3">
         <div className="flex justify-between items-center">
           <label className="text-sm font-medium">Time Period</label>
-          <span className="text-secondary font-bold">{timePeriod} years</span>
+          <span className="text-secondary font-bold">
+            {timePeriod} years
+          </span>
         </div>
-        <Slider value={[timePeriod]} onValueChange={(v) => setTimePeriod(v[0])} min={1} max={40} step={1} />
+        <Slider
+          value={[timePeriod]}
+          onValueChange={(v) => setTimePeriod(v[0])}
+          min={1}
+          max={40}
+          step={1}
+        />
       </div>
 
       <div className="bg-secondary/10 rounded-xl p-4 text-center">
         <p className="text-sm text-muted-foreground">
-          <span className="font-semibold text-secondary">Tip:</span> Start early for maximum compounding benefits.
+          <span className="font-semibold text-secondary">Tip:</span>{" "}
+          Setting a clear goal helps you invest with discipline.
         </p>
       </div>
     </div>
   );
 };
 
+
 /* -------------------------- MUTUAL FUND CALC MINI -------------------------- */
-/** Lump-sum mutual fund calculator (one-time investment) */
 const MutualFundCalculatorMini = () => {
+  const [goalAmount, setGoalAmount] = useState(3000000); // 🎯 Goal
   const [investment, setInvestment] = useState(100000);
   const [expectedReturn, setExpectedReturn] = useState(12);
   const [timePeriod, setTimePeriod] = useState(10);
+
+  // 🔢 Calculate required lump-sum investment for goal
+  const requiredInvestment = useMemo(() => {
+    const r = expectedReturn / 100;
+    const t = timePeriod;
+
+    if (r === 0) return Math.round(goalAmount);
+
+    const required = goalAmount / Math.pow(1 + r, t);
+    return Math.max(1000, Math.round(required));
+  }, [goalAmount, expectedReturn, timePeriod]);
+
+  // Sync investment with goal calculation
+  useMemo(() => {
+    setInvestment(requiredInvestment);
+  }, [requiredInvestment]);
 
   const mfDetails = useMemo(() => {
     const P = investment;
@@ -304,23 +376,46 @@ const MutualFundCalculatorMini = () => {
       <div className="bg-primary/10 rounded-2xl p-5 text-center border border-primary/20">
         <div className="flex items-center justify-center gap-2 mb-2">
           <PiggyBank className="w-5 h-5 text-primary" />
-          <span className="text-sm font-medium text-muted-foreground">Future Value</span>
+          <span className="text-sm font-medium text-muted-foreground">
+            Goal Amount
+          </span>
         </div>
         <p className="text-3xl md:text-4xl font-black text-primary flex items-center justify-center gap-1">
           <IndianRupee className="w-7 h-7" />
-          {mfDetails.futureValue.toLocaleString("en-IN")}
+          {goalAmount.toLocaleString("en-IN")}
         </p>
         <p className="text-xs text-muted-foreground mt-2">
-          Invested: <span className="font-semibold">{formatCurrency(mfDetails.invested)}</span> • Gains:{" "}
-          <span className="font-semibold text-primary">{formatCurrency(mfDetails.gains)}</span>
+          Required Investment:{" "}
+          <span className="font-semibold text-primary">
+            {formatCurrency(investment)}
+          </span>
         </p>
       </div>
 
-      {/* Investment */}
+      {/* 🎯 Goal Amount */}
+      <div className="space-y-3">
+        <div className="flex justify-between items-center">
+          <label className="text-sm font-medium">Goal Amount</label>
+          <span className="text-primary font-bold">
+            {formatCurrency(goalAmount)}
+          </span>
+        </div>
+        <Slider
+          value={[goalAmount]}
+          onValueChange={(v) => setGoalAmount(v[0])}
+          min={100000}
+          max={50000000}
+          step={50000}
+        />
+      </div>
+
+      {/* One-time Investment (Auto-calculated) */}
       <div className="space-y-3">
         <div className="flex justify-between items-center">
           <label className="text-sm font-medium">One-time Investment</label>
-          <span className="text-primary font-bold">{formatCurrency(investment)}</span>
+          <span className="text-primary font-bold">
+            {formatCurrency(investment)}
+          </span>
         </div>
         <Slider
           value={[investment]}
@@ -335,7 +430,9 @@ const MutualFundCalculatorMini = () => {
       <div className="space-y-3">
         <div className="flex justify-between items-center">
           <label className="text-sm font-medium">Expected Return</label>
-          <span className="text-primary font-bold">{expectedReturn}%</span>
+          <span className="text-primary font-bold">
+            {expectedReturn}%
+          </span>
         </div>
         <Slider
           value={[expectedReturn]}
@@ -350,16 +447,26 @@ const MutualFundCalculatorMini = () => {
       <div className="space-y-3">
         <div className="flex justify-between items-center">
           <label className="text-sm font-medium">Time Period</label>
-          <span className="text-primary font-bold">{timePeriod} years</span>
+          <span className="text-primary font-bold">
+            {timePeriod} years
+          </span>
         </div>
-        <Slider value={[timePeriod]} onValueChange={(v) => setTimePeriod(v[0])} min={1} max={40} step={1} />
+        <Slider
+          value={[timePeriod]}
+          onValueChange={(v) => setTimePeriod(v[0])}
+          min={1}
+          max={40}
+          step={1}
+        />
       </div>
 
       <div className="bg-primary/10 rounded-xl p-4 text-center">
         <p className="text-sm text-muted-foreground">
-          <span className="font-semibold text-primary">Tip:</span> Lump-sum works great when you invest for long-term.
+          <span className="font-semibold text-primary">Tip:</span>{" "}
+          Goal-based investing works best with patience and discipline.
         </p>
       </div>
     </div>
   );
 };
+

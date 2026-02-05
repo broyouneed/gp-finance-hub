@@ -1,56 +1,69 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { 
-  Building2, 
-  Stethoscope, 
-  Home, 
-  Landmark, 
-  RefreshCw, 
+import {
+  Building2,
+  Stethoscope,
+  Home,
+  Landmark,
+  RefreshCw,
   Shield,
   Phone,
-  ArrowRight
+  ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+/* ---------------------------------- */
+/* Data */
+/* ---------------------------------- */
+
 const services = [
   {
-    icon: Building2,
-    title: "Business Loan",
-    description: "Secured and unsecured term loan and overdraft facility for your business growth.",
-    color: "primary",
+    icon: Shield,
+    title: "Insurance",
+    description:
+      "Comprehensive protection plans for your assets, business, and loved ones.",
+    color: "accent",
   },
   {
     icon: Stethoscope,
     title: "Professional Loan",
-    description: "Specialized loans for Doctors, CAs, Architects and other professionals.",
+    description:
+      "Specialized loans for Doctors, CAs, Architects and other professionals.",
     color: "secondary",
   },
   {
     icon: Home,
     title: "Home Loan",
-    description: "Home loan for purchase of new home or balance transfer of existing home loan to better ROI.",
+    description:
+      "Home loan for purchase of new home or balance transfer of existing home loan to better ROI.",
     color: "accent",
   },
   {
     icon: Landmark,
     title: "Loan Against Property",
-    description: "Term loan or overdraft against property with competitive rates.",
+    description:
+      "Term loan or overdraft against property with competitive rates.",
     color: "primary",
   },
   {
     icon: RefreshCw,
     title: "Debt Consolidation",
-    description: "Restructuring of existing loans to reduce your financial burden.",
+    description:
+      "Restructuring of existing loans to reduce your financial burden.",
     color: "secondary",
   },
   {
-    icon: Shield,
-    title: "Insurance",
-    description: "Comprehensive protection plans for your assets, business, and loved ones.",
-    color: "accent",
+    icon: Building2,
+    title: "Business Loan",
+    description:
+      "Secured and unsecured term loan and overdraft facility for your business growth.",
+    color: "primary",
   },
 ];
+
+/* ---------------------------------- */
+/* Helpers */
+/* ---------------------------------- */
 
 const getColorClasses = (color: string) => {
   const colors: Record<string, { bg: string; icon: string; hover: string }> = {
@@ -73,8 +86,12 @@ const getColorClasses = (color: string) => {
   return colors[color] || colors.primary;
 };
 
+/* ---------------------------------- */
+/* Component */
+/* ---------------------------------- */
+
 export const Services = () => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
@@ -95,8 +112,8 @@ export const Services = () => {
             <span className="gradient-text">Every Stage of Life</span>
           </h2>
           <p className="text-muted-foreground">
-            Whether you're planning to buy your dream home, grow your business, or secure 
-            your family's future — we've got you covered.
+            Whether you're planning to buy your dream home, grow your business,
+            or secure your family's future — we've got you covered.
           </p>
         </motion.div>
 
@@ -104,22 +121,49 @@ export const Services = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {services.map((service, index) => {
             const colorClasses = getColorClasses(service.color);
+
             return (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group glass-card rounded-2xl p-6 hover:shadow-[var(--shadow-lg)] transition-all duration-300 cursor-pointer"
+                whileHover={{ y: -6 }}
+                className="
+                  group glass-card rounded-2xl p-6 cursor-pointer
+                  transition-all duration-300
+                  hover:bg-black/5 dark:hover:bg-white/5
+                  hover:shadow-[var(--shadow-lg)]
+                "
               >
-                <div className={`w-14 h-14 rounded-xl ${colorClasses.bg} ${colorClasses.hover} flex items-center justify-center mb-4 transition-all duration-300`}>
-                  <service.icon className={`w-7 h-7 ${colorClasses.icon} group-hover:text-inherit transition-colors`} />
-                </div>
+                {/* Icon */}
+                <motion.div
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  className={`w-14 h-14 rounded-xl ${colorClasses.bg} ${colorClasses.hover}
+                              flex items-center justify-center mb-4 transition-all duration-300`}
+                >
+                  <service.icon
+                    className={`w-7 h-7 ${colorClasses.icon}
+                                group-hover:text-inherit transition-colors`}
+                  />
+                </motion.div>
+
+                {/* Content */}
                 <h3 className="font-bold text-lg mb-2">{service.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   {service.description}
                 </p>
-                <div className="mt-4 flex items-center text-primary font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+
+                {/* Learn More */}
+                <div
+                  className="
+                    mt-4 flex items-center text-primary font-medium text-sm
+                    opacity-0 translate-x-[-6px]
+                    group-hover:opacity-100 group-hover:translate-x-0
+                    transition-all duration-300
+                  "
+                >
                   Learn More <ArrowRight className="w-4 h-4 ml-1" />
                 </div>
               </motion.div>
@@ -135,10 +179,10 @@ export const Services = () => {
           className="text-center"
         >
           <p className="text-muted-foreground mb-4">Call For More Info</p>
-          <a href="tel:+918460775757">
+          <a href="tel:+917012565990">
             <Button size="lg" className="btn-primary-gradient rounded-full px-8">
               <Phone className="w-5 h-5 mr-2" />
-              +91 7012565990
+              +91 70125 65990
             </Button>
           </a>
         </motion.div>

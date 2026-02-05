@@ -126,11 +126,10 @@ export const About = () => {
               </h2>
             </div>
 
-            <p className="text-muted-foreground leading-relaxed">
-              At GP Financial Services, we understand that realities can sometimes be harsher 
-              than what we hope and desire for. You need funds to realize all your dreams – 
-              Home loans for all, Loans against Property for all, Personal loans for 
-              Professional and Salaried people, Unsecured Business Loan for Business person.
+            <p className="text-muted-foreground leading-relaxed"><b>
+            At GP Financial Services, we understand that life doesn’t always move as planned. Finances shape our choices, our comfort, and our future. That’s why we stand beside you—simplifying complexities, aligning goals, and helping your money work in harmony with your life.
+
+From personal aspirations to long-term growth, we manage your finances with care, clarity, and purpose.</b>
             </p>
 
             <p className="text-muted-foreground leading-relaxed">

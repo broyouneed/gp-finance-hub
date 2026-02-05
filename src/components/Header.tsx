@@ -7,7 +7,7 @@ const navLinks = [
   { name: "HOME", href: "#home" },
   { name: "ABOUT US", href: "#about" },
   { name: "SERVICES", href: "#services" },
-  { name: "EMI CALCULATOR", href: "#emi-calculator" },
+  { name: "EMI CALCULATOR", href: "#StartSIP" },
   { name: "FAQ", href: "#faq" },
   { name: "CONTACT US", href: "#contact" },
 ];

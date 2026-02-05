@@ -10,22 +10,32 @@ import {
 
 const faqs = [
   {
-    question: "How do I start a business with GP Financial Services?",
-    answer: "Start with a clear plan, register your business, and secure the funding you need through our flexible loan products. Our team will guide you through every step of the process.",
+    question: "What financial services does GP Financial Services offer?",
+    answer:
+      "GP Financial Services provides comprehensive financial solutions including insurance planning, personal and business finance management, funding support, and long-term financial strategy tailored to individual and business needs.",
   },
   {
-    question: "What is business capital management?",
-    answer: "It's the synergy between smart financing and sustainable growth. We help you align capital with long-term strategy to ensure your business thrives.",
+    question: "How do you help clients plan their finances effectively?",
+    answer:
+      "We take a holistic approach by understanding your income, goals, liabilities, and future plans. Our experts then create a structured financial roadmap designed for stability, growth, and peace of mind.",
   },
   {
-    question: "What are the benefits of co-working spaces for startups?",
-    answer: "Co-working reduces overhead, fosters collaboration, and offers networking opportunities vital to early-stage ventures. Many of our clients have found success in these environments.",
+    question: "Do you offer financial solutions for both individuals and businesses?",
+    answer:
+      "Yes. We work with salaried professionals, self-employed individuals, entrepreneurs, and businesses, offering customized financial guidance and solutions suited to every stage of life and growth.",
   },
   {
-    question: "How can I speed up my loan application process?",
-    answer: "Leverage our pre-built templates and document checklist to cut processing time in half. Focus on having all required documents ready before applying.",
+    question: "How does GP Financial Services ensure transparency and trust?",
+    answer:
+      "Transparency is central to our process. We clearly explain every option, cost, and benefit upfront, ensuring you can make informed financial decisions with complete confidence.",
+  },
+  {
+    question: "Can GP Financial Services help with long-term financial security?",
+    answer:
+      "Absolutely. From risk protection and wealth planning to business sustainability strategies, we focus on building long-term financial security aligned with your future goals.",
   },
 ];
+
 
 export const FAQ = () => {
   const ref = useRef(null);
