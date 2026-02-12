@@ -52,8 +52,8 @@ export const GoogleMap = () => {
                 <div>
                   <p className="font-semibold mb-1">Address</p>
                   <p className="text-primary-foreground/80 text-sm">
-                    No. 12/177/18, First Floor, Chembukkavu Shopping Complex,
-                    Thrissur, Kerala - 680020
+                  Capital Towers,      
+                     Door No. 3/235 (Old No.28/85/48), Second Floor, Patturaikkal, Thiruvambady P O, Thrissur -680022
                   </p>
                 </div>
               </div>
